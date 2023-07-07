@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <div>
-      <p>Launches</p>
+      <h1>Launches</h1>
       {
         launches.map((launch) => 
           (
