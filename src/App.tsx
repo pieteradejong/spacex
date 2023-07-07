@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import LaunchComp from './components/LaunchComp';
+import { Launch } from 'types/Launch';
 
 function App() {
-  const [launches, setLaunches] = useState([]);
+  const [launches, setLaunches] = useState<Launch[]>([]);
 
   useEffect(() => {
     const fetchLaunches = async () => {
       const response = await fetch("https://api.spacexdata.com/v5/launches/upcoming");
-      const data = await response.json();
+      const data: Launch[] = await response.json();
       console.log(data);
       setLaunches(data);
     }
@@ -16,17 +18,16 @@ function App() {
 
   return (
     <>
+      <div>
       <p>Launches</p>
       {
-        launches.map((launch: any) => 
+        launches.map((launch) => 
           (
-            <div className="launch" key={launch.id}>
-              <p>{launch.name}</p>
-              <p>{launch.date_utc}</p>
-            </div>
+            <LaunchComp launch={launch} />
           )
         )
       }
+      </div>
     </>
   )
 }
