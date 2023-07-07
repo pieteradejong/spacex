@@ -1,4 +1,6 @@
+# custom
 apitest.py
+dist/
 
 # dependencies
 /node_modules
