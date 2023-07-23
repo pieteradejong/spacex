@@ -19,8 +19,8 @@ function App() {
 
   return (
     <>
-      <div>
-      <h1>Launches</h1>
+      <div className='grid-flow-row flex flex-wrap'>
+      <h1 className="text-2xl">Launches</h1>
       {
         launches.map((launch) => 
           (

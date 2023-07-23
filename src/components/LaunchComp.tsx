@@ -3,8 +3,8 @@ import { Launch } from '../types/Launch';
 
 const LaunchComp: FC<{ launch: Launch }> = ({ launch }) => {
     return (
-        <div className='launch'>
-            <h3>Launch</h3>
+        <div className='launch w-fit'>
+            <span className='text-lg'>Launch</span>
             <p>Flight number: {launch.flight_number}</p>
             <p>Rocket number: {launch.rocket}</p>
             <p>Launch date: {launch.date_unix}</p>
