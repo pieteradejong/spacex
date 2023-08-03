@@ -9,7 +9,8 @@ import CrewsPage from './pages/CrewsPage';
 
 function App() {
   const queryClient = new QueryClient()
-  const pageTitles = ['Launches', 'Capsules', 'Cores', 'Crews', 'Dragons', 'Payloads', 'Rockets', 'Ships'];
+  // const pageTitles = ['Launches', 'Capsules', 'Cores', 'Crews', 'Dragons', 'Payloads', 'Rockets', 'Ships'];
+  const pageTitles = ['Launches', 'Rockets', 'Crews'];
 
   return (
     <>

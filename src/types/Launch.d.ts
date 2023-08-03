@@ -1,21 +1,3 @@
-/*enum DatePrecision {
-    half = "half",
-    quarter = "quarter",
-    year = "year",
-    month = "month",
-    day = "day",
-    hour = "hour"
-}
-
-export type Rocket = {
-    id: string;
-}
-
-export type LaunchFailure = {
-    id: string;
-}
-*/
-
 export type Launch = {
     flight_number: number; // e.g. 188
     name: string;

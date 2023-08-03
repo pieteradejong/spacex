@@ -9,3 +9,4 @@ All things SpaceX.
 
 ## TODOs
 * externalize api urls into config/constants file
+* replace `axios` with built-in `fetch`

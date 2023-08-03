@@ -1,8 +1,8 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 type MenuItemProps = {
     titles: string[];
-    // onChangePage: (destinationPage: string) => void;
 }
 
 const Menu: FC<MenuItemProps> = ({ titles }) => {
@@ -10,8 +10,10 @@ const Menu: FC<MenuItemProps> = ({ titles }) => {
         <div className='flex justify-center'>
         <ul className='flex p-0 list-none'>
             {
-                titles.map((str, ix) => (
-                    <li key={ix} className='ml-4 mr-4 text-2xl'>{str}</li>
+                titles.map((title, ix) => (
+                    <li key={ix} className='ml-4 mr-4 text-2xl'>
+                        <Link to={"/" + title.toLowerCase()}>{title}</Link>
+                    </li>
                 ))
             }
         </ul>
