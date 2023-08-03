@@ -11,16 +11,6 @@ function App() {
   const queryClient = new QueryClient()
   const pageTitles = ['Launches', 'Capsules', 'Cores', 'Crews', 'Dragons', 'Payloads', 'Rockets', 'Ships'];
 
-  // useEffect(() => {
-  //   const fetchLaunches = async () => {
-  //     const response = await fetch(URL_LAUNCHES_UPCOMING);
-  //     const data: Launch[] = await response.json();
-  //     console.log(data);
-  //     setLaunches(data);
-  //   }
-  //   fetchLaunches();
-  // }, []);
-
   return (
     <>
       <QueryClientProvider client={queryClient}>
