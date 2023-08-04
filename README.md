@@ -1,7 +1,11 @@
 # SpaceX
 
-All things SpaceX.
+Purpose: Experiment with latest React features and libraries, and work with Space data. 
+_Not for commercial purposes._
+Audience: Anyone interested in SpaceX and React.
 
+* uses the [Launch Library 2 API](https://thespacedevs.com/llapi) from [TheSpaceDevs](github.com/TheSpaceDevs).
+  * strictly being used as an experimental dev project.
 * source of inspiration for color schema and imagery: [rocketlabusa.com](https://www.rocketlabusa.com/).
 
 
@@ -14,7 +18,8 @@ All things SpaceX.
 
 ## v1.0 Milestone
 * One page for every API Entity, e.g. `Crew`, `Capsule`, `Launch` etc.
-* Each page includes all available and relevant data, organized into clean and reusable UI components.
+* Each page includes all available and relevant data, organized into clean and re
+* At route "/", add welcome/intro message
 
 ## v2.0 Milestone
 * [SpaceX-API](github.com/r-spacex/SpaceX-API) is apparently [no longer maintained](https://github.com/r-spacex/SpaceX-API/issues/1243) since October, 2022, so after v1 functionality is complete, this client app will migrate to the new API. 
