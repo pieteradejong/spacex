@@ -1,18 +1,17 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 type MenuItemProps = {
     titles: string[];
 }
-
 const Menu: FC<MenuItemProps> = ({ titles }) => {
     return (
-        <div className='flex justify-center'>
+        <div className='flex justify-center pt-1 pb-1 border-b border-solid border-white'>
         <ul className='flex p-0 list-none'>
             {
                 titles.map((title, ix) => (
-                    <li key={ix} className='ml-4 mr-4 text-2xl'>
-                        <Link to={"/" + title.toLowerCase()}>{title}</Link>
+                    <li key={ix} className='ml-4 mr-4 text-2xl hover:border-b-2 hover:border-red-500'>
+                        <NavLink to={"/" + title.toLowerCase()} className={ ({isActive}) => isActive ? 'font-extrabold' : '' }>{title}</NavLink>
                     </li>
                 ))
             }
