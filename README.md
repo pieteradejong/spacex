@@ -2,7 +2,7 @@
 
 All things SpaceX.
 
-* source of inspiration for color schema and imagery: [rocketlabusa.com]([fdkj](https://www.rocketlabusa.com/)).
+* source of inspiration for color schema and imagery: [rocketlabusa.com](https://www.rocketlabusa.com/).
 
 
 ## TODOs
