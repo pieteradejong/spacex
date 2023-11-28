@@ -1,28 +1,33 @@
-// import { FC } from 'react';
-// import { useQuery } from 'react-query'
-// import { Rocket } from 'types/Rocket';
-// import RocketComp from '../components/RocketComp';
-// import axios from 'axios';
-// // import { BASE_URL, ENDPOINT_ROCKETS_ALL } from '../constants';
+import { FC } from 'react';
+import { useQuery } from 'react-query'
+import { Rocket } from 'types/types';
+import { BASE_URL, ENDPOINT_ROCKET } from '../constants';
+import RocketComp from '../components/RocketComp';
+import axios from 'axios';
 
-// const RocketsPage: FC = () => {
-//     const fetchLaunches = async () => {
-//       const { data } = await axios.get<Rocket[]>(`${BASE_URL}${ENDPOINT_ROCKETS_ALL}`);
-//       return data;
-//     }
+const fetchRockets = async (): Promise<Rocket[]> => {
+    const { data } = await axios.get(`${BASE_URL}${ENDPOINT_ROCKET}`);
+    return data;
+  };
+
+
+const RocketsPage: FC = () => {
+
+    const { data, isLoading, error } = useQuery<Rocket[], Error>('launches', fetchRockets);
+    
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>An error has occurred: {error.message}</div>;
   
-//     const { data } = useQuery<Rocket[]>('launches', fetchLaunches);
+    return (
+      <div className="flex flex-wrap justify-center gap-4">
+            {data?.map((launch) => 
+              (
+                <RocketComp rocket={launch} key={launch.id} />
+              )
+            )}
+        </div>
+    );
+  }
   
-//     return (
-//       <div>
-//             {data?.map((rocket) => 
-//               (
-//                 <RocketComp rocket={rocket} key={rocket.id} />
-//               )
-//             )}
-//         </div>
-//     );
-//   }
-  
-//   export default RocketsPage;
+  export default RocketsPage;
   

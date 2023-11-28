@@ -11,7 +11,7 @@ const Menu: FC<MenuItemProps> = ({ titles }) => {
             {
                 titles.map((title, ix) => (
                     <li key={ix} className='ml-4 mr-4 text-2xl hover:border-b-2 hover:border-red-500'>
-                        <NavLink to={"/" + title.toLowerCase()} className={ ({isActive}) => isActive ? 'font-extrabold' : '' }>{title}</NavLink>
+                        <NavLink to={"/" + title.toLowerCase()} className={ ({isActive}) => isActive ? 'text-blue-500 font-extrabold' : '' }>{title}</NavLink>
                     </li>
                 ))
             }

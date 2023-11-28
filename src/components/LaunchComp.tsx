@@ -9,6 +9,7 @@ const LaunchComp: FC<{ launch: Launch }> = ({ launch }) => {
             <p>Launch id: {launch.id}</p>
             <p>Launch name: {launch.name}</p>
             <p>Launch rocket: {launch.rocket}</p>
+            <p>Launch success: {launch.success ? 'yes' : 'no'}</p>
         </div>
     );
 }

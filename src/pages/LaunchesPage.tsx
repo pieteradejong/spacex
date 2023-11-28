@@ -18,7 +18,7 @@ const LaunchesPage: FC = () => {
   if (error) return <div>An error has occurred: {error.message}</div>;
 
   return (
-    <div>
+    <div className="flex flex-wrap justify-center gap-4">
           {data?.map((launch) => 
             (
               <LaunchComp launch={launch} key={launch.id} />
