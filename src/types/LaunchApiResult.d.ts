@@ -1,6 +1,6 @@
 export type LaunchApiResult = {
     count: number;
-    previous: string | null;
     next: string | null;
+    previous: string | null;
     results: Launch[];
 };
