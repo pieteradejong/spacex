@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { Launch } from '../types/types';
-// import { extractDateFromUTC } from '../utils';
 
 const LaunchComp: FC<{ launch: Launch }> = ({ launch }) => {
     return (

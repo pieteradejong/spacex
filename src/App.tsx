@@ -10,7 +10,14 @@ import SpacestationsPage from './pages/SpacestationsPage';
 import SpacewalksPage from './pages/SpacewalksPage';
 
 function App() {
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        cacheTime: 1000 * 60 * 60 * 24, 
+        staleTime: 1000 * 60 * 60 * 24, 
+      },
+    },
+  })
   const pageTitles = ['Launches', 'Spacecraft', 'Astronauts', 'Spacestations', 'Spacewalks'];
 
   return (

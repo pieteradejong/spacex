@@ -26,11 +26,19 @@ const Spacecraftpage: FC = () => {
           <SpacecraftComp spacecraft={spacecraft} key={spacecraft.id} />
         ))}
       </div>
-      <div className="pagination">
-        <button onClick={() => setCurrentPageUrl(data?.previous ?? '')} disabled={!data?.previous}>
+      <div className="pagination mt-6 mb-4 px-4 py-3 rounded-lg flex justify-center items-center gap-4">
+        <button 
+          onClick={() => setCurrentPageUrl(data?.previous ?? '')} 
+          disabled={!data?.previous}
+          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:bg-gray-400"
+        >
           Previous
         </button>
-        <button onClick={() => setCurrentPageUrl(data?.next ?? '')} disabled={!data?.next}>
+        <button 
+          onClick={() => setCurrentPageUrl(data?.next ?? '')} 
+          disabled={!data?.next}
+          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:bg-gray-400"
+        >
           Next
         </button>
       </div>
