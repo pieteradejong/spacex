@@ -5,11 +5,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import LaunchesPage from './pages/LaunchesPage';
 import Spacecraftpage from './pages/SpacecraftPage';
+import AstronautsPage from './pages/AstronautsPage';
+import SpacestationsPage from './pages/SpacestationsPage';
+import SpacewalksPage from './pages/SpacewalksPage';
 
 function App() {
   const queryClient = new QueryClient()
-  // const pageTitles = ['Launches', 'Capsules', 'Cores', 'Crews', 'Dragons', 'Payloads', 'Rockets', 'Ships'];
-  const pageTitles = ['Launches', 'Spacecraft'];
+  const pageTitles = ['Launches', 'Spacecraft', 'Astronauts', 'Spacestations', 'Spacewalks'];
 
   return (
     <>
@@ -20,6 +22,9 @@ function App() {
           <Routes>
               <Route path='/launches' element={<LaunchesPage />} />
               <Route path='/spacecraft' element={<Spacecraftpage />} />
+              <Route path='/astronauts' element={<AstronautsPage />} />
+              <Route path='/spacestations' element={<SpacestationsPage />} />
+              <Route path='/spacewalks' element={<SpacewalksPage />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

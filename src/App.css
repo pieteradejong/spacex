@@ -7,8 +7,13 @@
   color: rgba(255, 255, 255, 0.87);
 }
 
-.launch {
+.launch, .spacecraft {
   background: #1a1a1a;
   padding: 5px;
   margin: 10px;
+}
+
+
+.pagination {
+  background: #1a1a1a;
 }
