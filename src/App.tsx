@@ -4,13 +4,12 @@ import Menu from './components/Menu';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import LaunchesPage from './pages/LaunchesPage';
-// import RocketsPage from './pages/RocketsPage';
-// import CrewsPage from './pages/CrewsPage';
+import Spacecraftpage from './pages/SpacecraftPage';
 
 function App() {
   const queryClient = new QueryClient()
   // const pageTitles = ['Launches', 'Capsules', 'Cores', 'Crews', 'Dragons', 'Payloads', 'Rockets', 'Ships'];
-  const pageTitles = ['Launches', 'Rockets'];
+  const pageTitles = ['Launches', 'Spacecraft'];
 
   return (
     <>
@@ -20,7 +19,7 @@ function App() {
           <Menu titles={pageTitles} />
           <Routes>
               <Route path='/launches' element={<LaunchesPage />} />
-              {/* <Route path='/rockets' element={<RocketsPage />} /> */}
+              <Route path='/spacecraft' element={<Spacecraftpage />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

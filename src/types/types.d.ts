@@ -6,6 +6,17 @@ export type LaunchApiResponse = {
     results: Launch[];
 };
 
+type SpacecraftApiResponse = {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: Spacecraft[];
+};
+
+/* Entities */
+
+/* Launches */
+
 interface LaunchStatus {
     id: number;
     name: string;
@@ -124,4 +135,49 @@ interface Launch {
     type: string;
 }
 
+
+/* Spacecraft */
+
+type SpacecraftStatus = {
+    id: number;
+    name: string;
+};
+
+type SpacecraftType = {
+    id: number;
+    name: string;
+};
+
+type SpacecraftAgency = {
+    id: number;
+    url: string;
+    name: string;
+    type: string;
+};
+
+type SpacecraftConfig = {
+    id: number;
+    url: string;
+    name: string;
+    type: SpacecraftType;
+    agency: SpacecraftAgency;
+    in_use: boolean;
+    image_url: string;
+};
+
+type Spacecraft = {
+    id: number;
+    url: string;
+    name: string;
+    serial_number: string;
+    is_placeholder: boolean;
+    in_space: boolean;
+    time_in_space: string;
+    time_docked: string;
+    flights_count: number;
+    mission_ends_count: number;
+    status: SpacecraftStatus;
+    description: string;
+    spacecraft_config: SpacecraftConfig;
+};
 
