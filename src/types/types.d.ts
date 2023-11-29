@@ -1,182 +1,127 @@
 /* API results */
-export type LaunchApiResult = Launch[];
+export type LaunchApiResponse = {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: Launch[];
+};
 
-/* Objects */
-// export type Launch = {
-//     id: string;
-//     name: string;
-//     rocket: string;
-
-// };
-
-export type Launch = {
-    fairings: {
-      reused: boolean;
-      recovery_attempt: boolean;
-      recovered: boolean;
-      ships: string[];
-    };
-    links: {
-      patch: {
-        small: string;
-        large: string;
-      };
-      reddit: {
-        campaign: string | null;
-        launch: string | null;
-        media: string | null;
-        recovery: string | null;
-      };
-      flickr: {
-        small: string[];
-        original: string[];
-      };
-      presskit: string | null;
-      webcast: string;
-      youtube_id: string;
-      article: string;
-      wikipedia: string;
-    };
-    static_fire_date_utc: string;
-    static_fire_date_unix: number;
-    net: boolean;
-    window: number;
-    rocket: string;
-    success: boolean;
-    failures: {
-      time: number;
-      altitude: number | null;
-      reason: string;
-    }[];
-    details: string;
-    crew: string[];
-    ships: string[];
-    capsules: string[];
-    payloads: string[];
-    launchpad: string;
-    flight_number: number;
+interface LaunchStatus {
+    id: number;
     name: string;
-    date_utc: string;
-    date_unix: number;
-    date_local: string;
-    date_precision: string;
-    upcoming: boolean;
-    cores: {
-      core: string;
-      flight: number;
-      gridfins: boolean;
-      legs: boolean;
-      reused: boolean;
-      landing_attempt: boolean;
-      landing_success: null | boolean;
-      landing_type: string | null;
-      landpad: string | null;
-    }[];
-    auto_update: boolean;
-    tbd: boolean;
-    launch_library_id: string | null;
-    id: string;
-  };
-  
-export type Rocket = {
-    height: {
-      meters: number;
-      feet: number;
-    };
-    diameter: {
-      meters: number;
-      feet: number;
-    };
-    mass: {
-      kg: number;
-      lb: number;
-    };
-    first_stage: {
-      thrust_sea_level: {
-        kN: number;
-        lbf: number;
-      };
-      thrust_vacuum: {
-        kN: number;
-        lbf: number;
-      };
-      reusable: boolean;
-      engines: number;
-      fuel_amount_tons: number;
-      burn_time_sec: number;
-    };
-    second_stage: {
-      thrust: {
-        kN: number;
-        lbf: number;
-      };
-      payloads: {
-        composite_fairing: {
-          height: {
-            meters: number;
-            feet: number;
-          };
-          diameter: {
-            meters: number;
-            feet: number;
-          };
-        };
-        option_1: string;
-      };
-      reusable: boolean;
-      engines: number;
-      fuel_amount_tons: number;
-      burn_time_sec: number;
-    };
-    engines: {
-      isp: {
-        sea_level: number;
-        vacuum: number;
-      };
-      thrust_sea_level: {
-        kN: number;
-        lbf: number;
-      };
-      thrust_vacuum: {
-        kN: number;
-        lbf: number;
-      };
-      number: number;
-      type: string;
-      version: string;
-      layout: string;
-      engine_loss_max: number;
-      propellant_1: string;
-      propellant_2: string;
-      thrust_to_weight: number;
-    };
-    landing_legs: {
-      number: number;
-      material: string | null;
-    };
-    payload_weights: {
-      id: string;
-      name: string;
-      kg: number;
-      lb: number;
-    }[];
-    flickr_images: string[];
+    abbrev: string;
+    description: string;
+}
+
+interface NetPrecision {
+    id: number;
+    name: string;
+    abbrev: string;
+    description: string;
+}
+
+interface LaunchServiceProvider {
+    id: number;
+    url: string;
     name: string;
     type: string;
-    active: boolean;
-    stages: number;
-    boosters: number;
-    cost_per_launch: number;
-    success_rate_pct: number;
-    first_flight: string;
-    country: string;
-    company: string;
-    wikipedia: string;
-    description: string;
-    id: string;
-  };
-  
-
-export type Crew = {
-    id: string;
 }
+
+interface RocketConfiguration {
+    id: number;
+    url: string;
+    name: string;
+    family: string;
+    full_name: string;
+    variant: string;
+}
+
+interface Rocket {
+    id: number;
+    configuration: RocketConfiguration;
+}
+
+interface Orbit {
+    id: number;
+    name: string;
+    abbrev: string;
+}
+
+interface Mission {
+    id: number;
+    name: string;
+    description: string;
+    launch_designator: string | null;
+    type: string;
+    orbit: Orbit;
+    agencies: [];
+    info_urls: string[];
+    vid_urls: string[];
+}
+
+interface PadLocation {
+    id: number;
+    url: string;
+    name: string;
+    country_code: string;
+    description: string | null;
+    map_image: string;
+    timezone_name: string;
+    total_launch_count: number;
+    total_landing_count: number;
+}
+
+interface Pad {
+    id: number;
+    url: string;
+    agency_id: number | null;
+    name: string;
+    description: string | null;
+    info_url: string | null;
+    wiki_url: string;
+    map_url: string;
+    latitude: string;
+    longitude: string;
+    location: PadLocation;
+    country_code: string;
+    map_image: string;
+    total_launch_count: number;
+    orbital_launch_attempt_count: number;
+}
+
+interface Launch {
+    id: string;
+    url: string;
+    slug: string;
+    name: string;
+    status: LaunchStatus;
+    last_updated: string;
+    net: string;
+    window_end: string;
+    window_start: string;
+    net_precision: NetPrecision;
+    probability: number | null;
+    weather_concerns: string | null;
+    holdreason: string;
+    failreason: string;
+    hashtag: string | null;
+    launch_service_provider: LaunchServiceProvider;
+    rocket: Rocket;
+    mission: Mission;
+    pad: Pad;
+    webcast_live: boolean;
+    image: string;
+    infographic: string | null;
+    program: [];
+    orbital_launch_attempt_count: number;
+    location_launch_attempt_count: number;
+    pad_launch_attempt_count: number;
+    agency_launch_attempt_count: number;
+    orbital_launch_attempt_count_year: number;
+    location_launch_attempt_count_year: number;
+    pad_launch_attempt_count_year: number;
+    agency_launch_attempt_count_year: number;
+    type: string;
+}
+
+

@@ -2,29 +2,39 @@ import { FC } from 'react';
 import LaunchComp from '../components/LaunchComp';
 import { useQuery } from 'react-query'
 import { BASE_URL, ENDPOINT_LAUNCHES } from '../constants';
-import { Launch } from 'types/types';
+import { LaunchApiResponse } from 'types/types';
 import axios from 'axios';
+import { useState } from 'react';
 
-const fetchLaunches = async (): Promise<Launch[]> => {
-  const { data } = await axios.get(`${BASE_URL}${ENDPOINT_LAUNCHES}`);
+const fetchLaunches = async (url: string): Promise<LaunchApiResponse> => {
+  const { data } = await axios.get(url);
   return data;
 };
 
 const LaunchesPage: FC = () => {
 
-  const { data, isLoading, error } = useQuery<Launch[], Error>('launches', fetchLaunches);
-  
+  const [currentPageUrl, setCurrentPageUrl] = useState(`${BASE_URL}${ENDPOINT_LAUNCHES}`);
+  const { data, isLoading, error } = useQuery<LaunchApiResponse, Error>(['launches', currentPageUrl], () => fetchLaunches(currentPageUrl));
+
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>An error has occurred: {error.message}</div>;
+  if (error) return <div>An error has occurred</div>;
 
   return (
-    <div className="flex flex-wrap justify-center gap-4">
-          {data?.map((launch) => 
-            (
-              <LaunchComp launch={launch} key={launch.id} />
-            )
-          )}
+    <div>
+      <div className="flex flex-wrap justify-center gap-4">
+        {data?.results?.map((launch) => (
+          <LaunchComp launch={launch} key={launch.slug} />
+        ))}
       </div>
+      <div className="pagination">
+        <button onClick={() => setCurrentPageUrl(data?.previous ?? '')} disabled={!data?.previous}>
+          Previous
+        </button>
+        <button onClick={() => setCurrentPageUrl(data?.next ?? '')} disabled={!data?.next}>
+          Next
+        </button>
+      </div>
+    </div>
   );
 }
 

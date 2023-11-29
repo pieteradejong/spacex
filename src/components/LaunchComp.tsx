@@ -7,9 +7,8 @@ const LaunchComp: FC<{ launch: Launch }> = ({ launch }) => {
         <div className='launch w-fit rounded-lg'>
             <span className='text-lg'>Launch</span>
             <p>Launch id: {launch.id}</p>
-            <p>Launch name: {launch.name}</p>
-            <p>Launch rocket: {launch.rocket}</p>
-            <p>Launch success: {launch.success ? 'yes' : 'no'}</p>
+            <p>Launch name: {launch.slug}</p>
+            <p>Launch rocket: {launch.name}</p>
         </div>
     );
 }
