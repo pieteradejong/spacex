@@ -6,39 +6,46 @@ export type LaunchApiResponse = {
     results: Launch[];
 };
 
-type SpacecraftApiResponse = {
+export type SpacecraftApiResponse = {
     count: number;
     next: string | null;
     previous: string | null;
     results: Spacecraft[];
 };
 
+export type SpacestationApiResponse = {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: Spacestation[];
+};
+
 /* Entities */
 
 /* Launches */
 
-interface LaunchStatus {
+export interface LaunchStatus {
     id: number;
     name: string;
     abbrev: string;
     description: string;
 }
 
-interface NetPrecision {
+export interface NetPrecision {
     id: number;
     name: string;
     abbrev: string;
     description: string;
 }
 
-interface LaunchServiceProvider {
+export interface LaunchServiceProvider {
     id: number;
     url: string;
     name: string;
     type: string;
 }
 
-interface RocketConfiguration {
+export interface RocketConfiguration {
     id: number;
     url: string;
     name: string;
@@ -47,18 +54,18 @@ interface RocketConfiguration {
     variant: string;
 }
 
-interface Rocket {
+export interface Rocket {
     id: number;
     configuration: RocketConfiguration;
 }
 
-interface Orbit {
+export interface Orbit {
     id: number;
     name: string;
     abbrev: string;
 }
 
-interface Mission {
+export interface Mission {
     id: number;
     name: string;
     description: string;
@@ -70,7 +77,7 @@ interface Mission {
     vid_urls: string[];
 }
 
-interface PadLocation {
+export interface PadLocation {
     id: number;
     url: string;
     name: string;
@@ -82,7 +89,7 @@ interface PadLocation {
     total_landing_count: number;
 }
 
-interface Pad {
+export interface Pad {
     id: number;
     url: string;
     agency_id: number | null;
@@ -100,7 +107,7 @@ interface Pad {
     orbital_launch_attempt_count: number;
 }
 
-interface Launch {
+export interface Launch {
     id: string;
     url: string;
     slug: string;
@@ -138,24 +145,24 @@ interface Launch {
 
 /* Spacecraft */
 
-type SpacecraftStatus = {
+export type SpacecraftStatus = {
     id: number;
     name: string;
 };
 
-type SpacecraftType = {
+export type SpacecraftType = {
     id: number;
     name: string;
 };
 
-type SpacecraftAgency = {
+export type SpacecraftAgency = {
     id: number;
     url: string;
     name: string;
     type: string;
 };
 
-type SpacecraftConfig = {
+export type SpacecraftConfig = {
     id: number;
     url: string;
     name: string;
@@ -165,7 +172,7 @@ type SpacecraftConfig = {
     image_url: string;
 };
 
-type Spacecraft = {
+export type Spacecraft = {
     id: number;
     url: string;
     name: string;
@@ -180,4 +187,39 @@ type Spacecraft = {
     description: string;
     spacecraft_config: SpacecraftConfig;
 };
+
+/* Spacestation */
+
+type SpacestationStatus = {
+    id: number;
+    name: string;
+};
+
+type SpacestationType = {
+    id: number;
+    name: string;
+};
+
+type SpacestationOwner = {
+    id: number;
+    url: string;
+    name: string;
+    abbrev: string;
+};
+
+type Spacestation = {
+    id: number;
+    url: string;
+    name: string;
+    status: SpacestationStatus;
+    type: SpacestationType;
+    founded: string;
+    deorbited: string | null;
+    description: string;
+    orbit: string;
+    owners: SpacestationOwner[];
+    image_url: string;
+};
+
+
 
