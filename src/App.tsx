@@ -7,7 +7,7 @@ import LaunchesPage from './pages/LaunchesPage';
 import Spacecraftpage from './pages/SpacecraftPage';
 import AstronautsPage from './pages/AstronautsPage';
 import SpacestationsPage from './pages/SpacestationsPage';
-import SpacewalksPage from './pages/SpacewalksPage';
+import SpacewalkPage from './pages/SpacewalkPage';
 
 function App() {
   const queryClient = new QueryClient({
@@ -31,7 +31,7 @@ function App() {
               <Route path='/spacecraft' element={<Spacecraftpage />} />
               <Route path='/astronauts' element={<AstronautsPage />} />
               <Route path='/spacestations' element={<SpacestationsPage />} />
-              <Route path='/spacewalks' element={<SpacewalksPage />} />
+              <Route path='/spacewalks' element={<SpacewalkPage />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

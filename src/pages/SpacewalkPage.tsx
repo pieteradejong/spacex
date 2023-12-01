@@ -1,20 +1,20 @@
 import { FC } from 'react';
 import { useQuery } from 'react-query'
-import { AstronautApiResponse } from 'types/types';
-import { BASE_URL, ENDPOINT_ASTRONAUT } from '../constants';
-import AstronautComp from '../components/AstronautComp';
+import { SpacewalkApiResponse } from 'types/types';
+import { BASE_URL, ENDPOINT_SPACEWALK } from '../constants';
+import SpacewalkComp from '../components/SpacewalkComp';
 import axios from 'axios';
 import { useState } from 'react';
 
-const fetchAstronauts = async (url: string): Promise<AstronautApiResponse> => {
+const fetchSpacewalk = async (url: string): Promise<SpacewalkApiResponse> => {
   const { data } = await axios.get(url);
   return data;
 };
 
 
-const SpacestationsPage: FC = () => {
-  const [currentPageUrl, setCurrentPageUrl] = useState(`${BASE_URL}${ENDPOINT_ASTRONAUT}`);
-  const { data, isLoading, error } = useQuery<AstronautApiResponse, Error>(['astronaut', currentPageUrl], () => fetchAstronauts(currentPageUrl));
+const SpacewalkPage: FC = () => {
+  const [currentPageUrl, setCurrentPageUrl] = useState(`${BASE_URL}${ENDPOINT_SPACEWALK}`);
+  const { data, isLoading, error } = useQuery<SpacewalkApiResponse, Error>(['spacewalk', currentPageUrl], () => fetchSpacewalk(currentPageUrl));
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>An error has occurred: {error.message}</div>;
@@ -22,8 +22,8 @@ const SpacestationsPage: FC = () => {
   return (
     <div>
       <div className="flex flex-wrap justify-center gap-4">
-        {data?.results.map((astronaut) => (
-          <AstronautComp astronaut={astronaut} key={astronaut.id} />
+        {data?.results.map((spacewalk) => (
+          <SpacewalkComp spacewalk={spacewalk} key={spacewalk.id} />
         ))}
       </div>
       <div className="pagination mt-6 mb-4 px-4 py-3 rounded-lg flex justify-center items-center gap-4">
@@ -46,4 +46,4 @@ const SpacestationsPage: FC = () => {
   );
 };
 
-export default SpacestationsPage;
+export default SpacewalkPage;

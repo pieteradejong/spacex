@@ -7,8 +7,8 @@ const SpacecraftComp: FC<{ spacecraft: Spacecraft }> = ({ spacecraft }) => {
         <div className='spacecraft rounded-lg p-4 w-72'>
             <span className='text-lg font-bold'>{spacecraft.name}</span>
             <p>Description: {truncate(spacecraft.description, 30)}</p>
-            <p>Number of flights: {spacecraft.flights_count}</p>
-            <p>Status: {spacecraft.status.name}</p>
+            <div>Number of flights: {spacecraft.flights_count}</div>
+            <div>Status: {spacecraft.status.name}</div>
         </div>
     );
 }

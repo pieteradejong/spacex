@@ -53,5 +53,10 @@ Audience: Anyone interested in SpaceX and React.
 * [WIP] Pages to add: `Astronauts`, `Spacestation`, `Spacewalks`
 * [] Add `detail` pages for spacecraft, astronauts, etc.
 * [] Potentially: add description header to some/all pages.
+* First: add all entity and other relevnat pages.
+* THEN: extract commonanlities: types, api endpoint constants, fetchDataFunction, 
+* Pagination should be separate component
+* add guards + colored label for what's active/in-orbit or not
+* For every status or 'one of an enum', display all options and highlight the valid one.
+* fix type proliferation
 * 
-
